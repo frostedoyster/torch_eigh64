@@ -1,0 +1,25 @@
+ninja_required_version = 1.3
+cxx = icpc
+
+cflags = -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O3 -Wall -fPIC -fPIC -I/home/bigi/virtualenv-j/lib/python3.10/site-packages/torch/include -I/home/bigi/virtualenv-j/lib/python3.10/site-packages/torch/include/torch/csrc/api/include -I/home/bigi/virtualenv-j/lib/python3.10/site-packages/torch/include/TH -I/home/bigi/virtualenv-j/lib/python3.10/site-packages/torch/include/THC -I/home/bigi/virtualenv-j/include -I/ssoft/spack/syrah/v1/opt/spack/linux-rhel8-icelake/gcc-11.3.0/python-3.10.4-mcloxmxhlovfwwkxzyafm35bq545ntqx/include/python3.10 -c
+post_cflags = -w -lmkl -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1011"' -DTORCH_EXTENSION_NAME=eigh64 -D_GLIBCXX_USE_CXX11_ABI=0 -std=c++17
+cuda_dlink_post_cflags = 
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+
+
+
+
+build /home/bigi/torch_eigh64/build/temp.linux-x86_64-cpython-310/torch_eigh64/eigh64.o: compile /home/bigi/torch_eigh64/torch_eigh64/eigh64.cc
+
+
+
+
+
+
+
