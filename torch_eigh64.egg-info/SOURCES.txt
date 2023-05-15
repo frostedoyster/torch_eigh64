@@ -1,7 +1,0 @@
-setup.py
-torch_eigh64/__init__.py
-torch_eigh64/eigh64.cc
-torch_eigh64.egg-info/PKG-INFO
-torch_eigh64.egg-info/SOURCES.txt
-torch_eigh64.egg-info/dependency_links.txt
-torch_eigh64.egg-info/top_level.txt
