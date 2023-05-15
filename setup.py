@@ -7,8 +7,8 @@ os.environ["CXX"] = "icpc"
 extension = cpp_extension.CppExtension(
     'eigh64', 
     ['torch_eigh64/eigh64.cc'], 
-    extra_compile_args=['-w', '-lmkl'],
-    extra_ldflags=['-L${MKLROOT}/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl']
+    extra_compile_args=['-Wall', '-Wextra', '-qmkl'],
+    extra_ldflags=['-qmkl']
 )
 
 ext_modules = [extension]

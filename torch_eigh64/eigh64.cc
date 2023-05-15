@@ -13,7 +13,7 @@ std::vector<torch::Tensor> eigh64(torch::Tensor A) {
 
     std::size_t n = A.sizes()[0];
     torch::Tensor O = torch::empty_like(A); 
-    torch::Tensor d = torch::empty({A.sizes()[0], A.sizes()[1]}, torch::TensorOptions().dtype(torch::kFloat64));
+    torch::Tensor d = torch::empty({A.sizes()[0]}, torch::TensorOptions().dtype(torch::kFloat64));
 
     LAPACKE_dsyev(LAPACK_ROW_MAJOR, 'V', 'U', n, O.data_ptr<double>(), n, d.data_ptr<double>());
 
