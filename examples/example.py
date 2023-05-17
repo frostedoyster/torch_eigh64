@@ -1,7 +1,9 @@
 import torch
-import torch_eigh64
+from torch_mkl64 import mkl64
 
-A = torch.random.rand(5, 5)
-d, O = torch_eigh64.eigh64(A)
+A = torch.rand(2, 2)
+print(A)
+d, O = mkl64.eigh64(A)
 
-print(d, O)
+print(d)
+print(O)
