@@ -73,5 +73,5 @@ namespace mkl64 {
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     m.def("dsyev", &mkl64::dsyev, "dsyev: diagonalization (symmetric)");
     m.def("dgesv", &mkl64::dgesv, "dgesv: linear solve (general)");
-    m.def("dsysv", &mkl64::dsysv, "dgesv: linear solve (symmetric)");
+    m.def("dsysv", &mkl64::dsysv, "dsysv: linear solve (symmetric)");
 }
