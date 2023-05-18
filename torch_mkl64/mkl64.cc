@@ -11,7 +11,7 @@ std::vector<torch::Tensor> dsyev(torch::Tensor A) {
     if (A.dtype() != torch::kFloat64) throw std::runtime_error("not float64");
     if (!A.is_contiguous()) throw std::runtime_error("not contiguous");
 
-    std::size_t n = A.sizes()[0];
+    long long n = A.sizes()[0];
     torch::Tensor O = A.detach().clone();
     torch::Tensor d = torch::empty({A.sizes()[0]}, torch::TensorOptions().dtype(torch::kFloat64));
 
@@ -31,11 +31,11 @@ torch::Tensor dgesv(torch::Tensor A, torch::Tensor b) {
     if (!b.is_contiguous()) throw std::runtime_error("not contiguous");
     if (A.sizes()[0] != b.sizes()[0]) throw std::runtime_error("size inconsistency");
 
-    std::size_t n = A.sizes()[0];
+    long long n = A.sizes()[0];
     torch::Tensor x = b.detach().clone();
-    std::vector<std::size_t> ipiv(n);
+    std::vector<long long> ipiv(n);
 
-    int info = LAPACKE_dgesv(LAPACK_ROW_MAJOR, n, 1, A.data_ptr<double>(), n, ipiv, x.data_ptr<double>(), 1);
+    int info = LAPACKE_dgesv(LAPACK_ROW_MAJOR, n, 1, A.data_ptr<double>(), n, ipiv.data(), x.data_ptr<double>(), 1);
     if (info != 0) std::cout << "Something went wrong: info code " << info << std::endl;
 
     return x;
